@@ -140,9 +140,17 @@ public class FreecellModel implements FreecellOperations {
 
     }
 
+    boolean movable = false;
+
     // A card can be added added to a foundation iff its suit match that of the pile, and its value
     // is one more that that of the card currently one top of the pile. If the foundation pile is
     // currently empty, any ace can be added.
+
+    if (destination == PileType.FOUNDATION) {
+
+
+
+    }
 
 
   }

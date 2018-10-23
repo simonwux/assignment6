@@ -2,8 +2,8 @@ package freecell.model;
 
 public class Card {
 
-  private CardType type;
-  private int rank;
+  private final CardType type;
+  private final int rank;
 
   public Card(CardType type, int rank) throws IllegalArgumentException {
 

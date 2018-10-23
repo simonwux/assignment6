@@ -91,7 +91,37 @@ public class FreecellModel implements FreecellOperations {
   }
 
   public String getGameState() {
-    return null;
+    String ans = "";
+    for (int i = 0; i < this.SUITTYPENUM; i++) {
+      ans += "F" + Integer.toString(i + 1) + ":";
+      for (int j = 0; j < this.foundationPile.get(i).size() - 1; j++) {
+        ans += " " + this.foundationPile.get(i).get(j).toString() + ",";
+      }
+      if (this.foundationPile.get(i).size() > 0) {
+        ans += " " + this.foundationPile.get(i).get(this.foundationPile.get(i).size() - 1).toString();
+      }
+      ans += "\n";
+    }
+
+    for (int i = 0; i < this.opens; i++) {
+      ans += "O" + Integer.toString(i + 1) + ":";
+      if (this.openPile.get(i) != null) {
+        ans += " " + this.openPile.get(i).toString();
+      }
+      ans += "\n";
+    }
+
+    for (int i = 0; i < this.cascades; i++) {
+      ans += "C" + Integer.toString(i + 1) + ":";
+      for (int j = 0; j < this.cascadePile.get(i).size() - 1; j++) {
+        ans += " " + this.cascadePile.get(i).get(j).toString() + ",";
+      }
+      if (this.cascadePile.get(i).size() > 0) {
+        ans += " " + this.cascadePile.get(i).get(this.cascadePile.get(i).size() - 1).toString();
+      }
+      ans += "\n";
+    }
+    return ans;
   }
 
   private void shuffle(List deck) {

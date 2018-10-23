@@ -25,6 +25,7 @@ public class FreecellModelTest {
             .build();
     a.startGame(a.getDeck(), false);
     a.startGame(a.getDeck(), false);
+    System.out.println(a.getGameState());
   }
 
   @Test

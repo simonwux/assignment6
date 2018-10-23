@@ -43,7 +43,7 @@ public class Card {
     String display = "";
 
     if (rank == 1) {
-      display  = display + 'A';
+      display = display + 'A';
     } else if (rank == 11) {
       display = display + 'J';
     } else if (rank == 12) {

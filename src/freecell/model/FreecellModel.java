@@ -6,8 +6,17 @@ import java.util.List;
 
 public class FreecellModel implements FreecellOperations {
 
-  private final int CARDNUM = 52;
-  private final int CARDTYPENUM = 13;
+  private final int CARDNUM;
+  private final int CARDTYPENUM;
+  private final int cascades;
+  private final int opens;
+
+  public FreecellModel(int cascades, int opens) {
+    this.CARDNUM = 52;
+    this.CARDTYPENUM = 13;
+    this.cascades = cascades;
+    this.opens = opens;
+  }
 
   // Still confusing about what this function do, so I suppose it returns a new deck.
 
@@ -78,4 +87,7 @@ public class FreecellModel implements FreecellOperations {
     return true;
   }
 
+  public static FreecellOperationsBuilderImpl getBuilder(){
+    return new FreecellOperationsBuilderImpl();
+  }
 }

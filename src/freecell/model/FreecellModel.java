@@ -118,7 +118,7 @@ public class FreecellModel implements FreecellOperations {
         throw new IllegalArgumentException("Card to be move is not top card of a cascade pile.");
       }
 
-      currentCard = (Card)targetPile.get(cardIndex);
+      currentCard = (Card) targetPile.get(cardIndex);
 
     } else if (source == PileType.FOUNDATION) {
 
@@ -136,7 +136,7 @@ public class FreecellModel implements FreecellOperations {
         throw new IllegalArgumentException("Card to be move is not top card of a foundation pile.");
       }
 
-      currentCard = (Card)targetPile.get(cardIndex);
+      currentCard = (Card) targetPile.get(cardIndex);
 
     }
 
@@ -238,6 +238,8 @@ public class FreecellModel implements FreecellOperations {
     private int opens;
 
     private FreecellOperationsBuilderImpl() {
+      this.cascades = 8;
+      this.opens = 4;
     }
 
     public FreecellOperationsBuilder cascades(int c) {

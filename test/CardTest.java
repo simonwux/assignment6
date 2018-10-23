@@ -1,3 +1,4 @@
+import org.junit.Before;
 import org.junit.Test;
 
 import freecell.model.Card;
@@ -5,11 +6,30 @@ import freecell.model.CardType;
 
 import static org.junit.Assert.*;
 
-public class FreecellOperationsTest {
+public class CardTest {
+
+  @Before
+  public void setUp() throws Exception {
+  }
 
   @Test
-  public void testCard() {
+  public void getType() {
+  }
 
+  @Test
+  public void getRank() {
+  }
+
+  @Test
+  public void getColor() {
+  }
+
+  @Test
+  public void equals() {
+  }
+
+  @Test
+  public void toStringTest() {
     Card cardOne = new Card(CardType.SPADES, 1);
     Card cardTwo = new Card(CardType.SPADES, 13);
     Card cardThree = new Card(CardType.HEARTS, 8);
@@ -27,8 +47,5 @@ public class FreecellOperationsTest {
     assertEquals(cardThree, cardFour);
     assertNotEquals(cardOne, cardFive);
     assertNotEquals(cardOne, cardTwo);
-
   }
-
-
 }

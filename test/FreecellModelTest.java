@@ -26,6 +26,7 @@ public class FreecellModelTest {
     a.startGame(a.getDeck(), false);
     a.startGame(a.getDeck(), false);
     System.out.println(a.getGameState());
+    System.out.println(a.isGameOver());
   }
 
   @Test

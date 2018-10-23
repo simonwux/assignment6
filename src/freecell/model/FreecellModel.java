@@ -148,7 +148,19 @@ public class FreecellModel implements FreecellOperations {
   }
 
   public boolean isGameOver() {
-    return false;
+    for (int i = 0; i < this.SUITTYPENUM; i++) {
+      if (this.foundationPile.get(i).size() != this.CARDTYPENUM) {
+        return false;
+      }
+      Card ace = this.foundationPile.get(i).get(0);
+      for (int j = 1; j < this.CARDTYPENUM; j++) {
+        Card now = this.foundationPile.get(i).get(j);
+        if (now.getType() != ace.getType() || now.getRank() != ace.getRank() + j) {
+          return false;
+        }
+      }
+    }
+    return true;
   }
 
   public String getGameState() {

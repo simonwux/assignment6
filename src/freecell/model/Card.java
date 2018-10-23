@@ -1,5 +1,7 @@
 package freecell.model;
 
+import java.util.Set;
+
 public class Card {
 
   private final CardType type;
@@ -21,6 +23,14 @@ public class Card {
 
   public int getRank() {
     return rank;
+  }
+
+  public Color getColor() {
+    if (this.type == CardType.HEARTS || this.type == CardType.DIAMONDS) {
+      return Color.RED;
+    } else {
+      return Color.BLACK;
+    }
   }
 
   @Override

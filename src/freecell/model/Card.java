@@ -15,6 +15,14 @@ public class Card {
     this.type = type;
   }
 
+  public CardType getType() {
+    return type;
+  }
+
+  public int getRank() {
+    return rank;
+  }
+
   @Override
   public boolean equals(Object o) {
 

@@ -87,7 +87,30 @@ public class FreecellModel implements FreecellOperations {
     return true;
   }
 
-  public static FreecellOperationsBuilderImpl getBuilder(){
+  public static FreecellOperationsBuilderImpl getBuilder() {
     return new FreecellOperationsBuilderImpl();
+  }
+
+  public static class FreecellOperationsBuilderImpl implements FreecellOperationsBuilder {
+
+    private int cascades;
+    private int opens;
+
+    private FreecellOperationsBuilderImpl(){
+    }
+
+    public FreecellOperationsBuilder cascades(int c) {
+      this.cascades = c;
+      return this;
+    }
+
+    public FreecellOperationsBuilder opens(int o) {
+      this.opens = o;
+      return this;
+    }
+
+    public <K> FreecellOperations<K> build() {
+      return new FreecellModel(cascades, opens);
+    }
   }
 }

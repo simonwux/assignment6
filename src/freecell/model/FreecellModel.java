@@ -49,8 +49,33 @@ public class FreecellModel implements FreecellOperations {
 
   private boolean isDeckValid(List deck) {
 
-    // To be implemented.
-    return false;
+    if (deck.size() != CARDNUM) {
+      return false;
+    }
+
+    // A stupid but straightforward way to check duplicate.
+
+    List checkDuplicate = new ArrayList();
+
+    for (int i = 0; i < deck.size(); i++) {
+
+      Object currentCard = deck.get(i);
+
+      if (!(currentCard instanceof Card)) {
+        return false;
+      }
+
+      if (checkDuplicate.contains(currentCard)) {
+        return false;
+      }
+
+      checkDuplicate.add(currentCard);
+    }
+
+    // Since we initialize the card with pre-defined features,
+    // it is impossible to have invalid card/
+
+    return true;
   }
 
 }

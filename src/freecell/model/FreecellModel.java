@@ -84,6 +84,67 @@ public class FreecellModel implements FreecellOperations {
 
   public void move(PileType source, int pileNumber, int cardIndex, PileType destination, int destPileNumber) throws IllegalArgumentException, IllegalStateException {
 
+    // Get the current card to be move.
+
+    Card currentCard;
+
+    if (source == PileType.OPEN) {
+
+      if (pileNumber >= opens) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
+
+      Card targetCard = openPile.get(pileNumber); // initialized with null.
+
+      if (targetCard == null) {
+        throw new IllegalArgumentException("There is no such card to be move. ");
+      }
+
+      currentCard = openPile.get(pileNumber);
+
+    } else if (source == PileType.CASCADE) { // Only the top card of a cascade pile can be moved.
+
+      if (pileNumber >= cascades) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
+
+      List targetPile = cascadePile.get(pileNumber);
+
+      if (targetPile.isEmpty()) { // When the pile is empty, there is no element in the list.
+        throw new IllegalArgumentException("Target pile does not contain any card.");
+      }
+
+      if (cardIndex != targetPile.size() - 1) {
+        throw new IllegalArgumentException("Card to be move is not top card of a cascade pile.");
+      }
+
+      currentCard = (Card)targetPile.get(cardIndex);
+
+    } else if (source == PileType.FOUNDATION) {
+
+      if (pileNumber >= SUITTYPENUM) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
+
+      List targetPile = foundationPile.get(pileNumber);
+
+      if (targetPile.isEmpty()) { // When the pile is empty, there is no element in the list.
+        throw new IllegalArgumentException("Target pile does not contain any card.");
+      }
+
+      if (cardIndex != targetPile.size() - 1) {
+        throw new IllegalArgumentException("Card to be move is not top card of a foundation pile.");
+      }
+
+      currentCard = (Card)targetPile.get(cardIndex);
+
+    }
+
+    // A card can be added added to a foundation iff its suit match that of the pile, and its value
+    // is one more that that of the card currently one top of the pile. If the foundation pile is
+    // currently empty, any ace can be added.
+
+
   }
 
   public boolean isGameOver() {

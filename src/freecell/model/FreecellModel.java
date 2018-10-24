@@ -52,7 +52,7 @@ public class FreecellModel implements FreecellOperations {
       Deck.add(new Card(CardType.CLUBS, i + 1));
     }
 
-    shuffle(Deck);
+    //shuffle(Deck);
 
     return Deck;
   }
@@ -243,6 +243,9 @@ public class FreecellModel implements FreecellOperations {
   }
 
   public boolean isGameOver() {
+    if (!this.startGameFlag) {
+      return false;
+    }
     for (int i = 0; i < this.SUITTYPENUM; i++) {
       if (this.foundationPile.get(i).size() != this.CARDTYPENUM) {
         return false;

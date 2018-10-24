@@ -3,6 +3,7 @@ import org.junit.Test;
 
 import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
+import freecell.model.PileType;
 
 import static org.junit.Assert.*;
 
@@ -24,7 +25,11 @@ public class FreecellModelTest {
             .opens(4)
             .build();
     a.startGame(a.getDeck(), false);
-    a.startGame(a.getDeck(), false);
+    System.out.println(a.getGameState());
+    a.move(PileType.CASCADE, 0, 6, PileType.OPEN, 1);
+    a.move(PileType.CASCADE, 4, 5, PileType.CASCADE, 1);
+    a.move(PileType.CASCADE, 2, 6, PileType.OPEN, 0);
+    a.move(PileType.CASCADE, 2, 5, PileType.CASCADE, 1);
     System.out.println(a.getGameState());
     System.out.println(a.isGameOver());
   }

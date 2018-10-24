@@ -348,11 +348,17 @@ public class FreecellModel implements FreecellOperations {
     }
 
     public FreecellOperationsBuilder cascades(int c) {
+      if (c <= 0) {
+        throw new IllegalArgumentException("Cascades should bigger than 0.");
+      }
       this.cascades = c;
       return this;
     }
 
     public FreecellOperationsBuilder opens(int o) {
+      if (o <= 0) {
+        throw new IllegalArgumentException("Opens should bigger than 0.");
+      }
       this.opens = o;
       return this;
     }

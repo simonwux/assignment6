@@ -59,13 +59,29 @@ public class FreecellModelTest {
             .opens(4)
             .build();
     a.startGame(a.getDeck(), false);
-    System.out.println(a.getGameState());
-    a.move(PileType.CASCADE, 0, 6, PileType.OPEN, 1);
-    a.move(PileType.CASCADE, 4, 5, PileType.CASCADE, 1);
-    a.move(PileType.CASCADE, 2, 6, PileType.OPEN, 0);
-    a.move(PileType.CASCADE, 2, 5, PileType.CASCADE, 1);
-    System.out.println(a.getGameState());
-    System.out.println(a.isGameOver());
+    FreecellOperations<Object> b = FreecellModel
+            .getBuilder()
+            .cascades(8)
+            .opens(4)
+            .build();
+    b.startGame(b.getDeck(), true);
+    assertEquals("F1:\n" +
+            "F2:\n" +
+            "F3:\n" +
+            "F4:\n" +
+            "O1:\n" +
+            "O2:\n" +
+            "O3:\n" +
+            "O4:\n" +
+            "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n" +
+            "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n" +
+            "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n" +
+            "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n" +
+            "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n" +
+            "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n" +
+            "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n" +
+            "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n", a.getGameState());
+    assertNotEquals(a.getGameState(), b.getGameState());
   }
 
   @Test

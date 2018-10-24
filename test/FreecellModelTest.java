@@ -18,7 +18,7 @@ public class FreecellModelTest {
 
   @Test
   public void startGame() {
-    FreecellOperations<Object> a =FreecellModel
+    FreecellOperations<Object> a = FreecellModel
             .getBuilder()
             .cascades(8)
             .opens(4)

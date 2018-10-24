@@ -16,8 +16,10 @@ public class FreecellModel implements FreecellOperations {
   private List<List<Card>> cascadePile;
   private List<Card> openPile;
   private List<List<Card>> foundationPile;
+  private boolean startGameFlag;
 
-  public FreecellModel(int cascades, int opens) {
+  private FreecellModel(int cascades, int opens) {
+    this.startGameFlag = false;
     this.CARDNUM = 52;
     this.CARDTYPENUM = 13;
     this.SUITTYPENUM = CardType.values().length;
@@ -50,7 +52,7 @@ public class FreecellModel implements FreecellOperations {
       Deck.add(new Card(CardType.CLUBS, i + 1));
     }
 
-    //shuffle(Deck);
+    shuffle(Deck);
 
     return Deck;
   }
@@ -62,6 +64,7 @@ public class FreecellModel implements FreecellOperations {
     if (shuffle) {
       shuffle(deck);
     }
+    this.startGameFlag = true;
     this.cascadePile = new ArrayList();
     for (int i = 0; i < this.cascades; i++) {
       this.cascadePile.add(new ArrayList<Card>());
@@ -84,6 +87,9 @@ public class FreecellModel implements FreecellOperations {
 
   public void move(PileType source, int pileNumber, int cardIndex, PileType destination, int destPileNumber) throws IllegalArgumentException, IllegalStateException {
 
+    if (!this.startGameFlag) {
+      throw new IllegalStateException("The game has not started.");
+    }
     // Get the current card to be move.
 
     Card currentCard;
@@ -91,14 +97,14 @@ public class FreecellModel implements FreecellOperations {
 
     if (source == PileType.OPEN) {
 
-      if (pileNumber >= opens) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index. ");
+      if (pileNumber >= opens || pileNumber < 0) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index.");
       }
 
       Card targetCard = openPile.get(pileNumber); // initialized with null.
 
       if (targetCard == null) {
-        throw new IllegalArgumentException("There is no such card to be move. ");
+        throw new IllegalArgumentException("There is no such card to be move.");
       }
 
       currentCard = openPile.get(pileNumber);
@@ -106,14 +112,14 @@ public class FreecellModel implements FreecellOperations {
 
     } else if (source == PileType.CASCADE) { // Only the top card of a cascade pile can be moved.
 
-      if (pileNumber >= cascades) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index. ");
+      if (pileNumber >= cascades || pileNumber < 0) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index.");
       }
 
       sourceList = cascadePile.get(pileNumber);
 
       if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
-        throw new IllegalArgumentException("Target pile does not contain any card.");
+        throw new IllegalArgumentException("Source pile does not contain any card.");
       }
 
       if (cardIndex != sourceList.size() - 1) {
@@ -124,7 +130,7 @@ public class FreecellModel implements FreecellOperations {
 
     } else {
 
-      if (pileNumber >= SUITTYPENUM) { //suppose 0 1 2 3
+      if (pileNumber >= SUITTYPENUM || pileNumber < 0) { //suppose 0 1 2 3
         throw new IllegalArgumentException("Pile number out of index. ");
       }
 
@@ -151,8 +157,8 @@ public class FreecellModel implements FreecellOperations {
 
     if (destination == PileType.FOUNDATION) {
 
-      if (destPileNumber >= SUITTYPENUM) {
-        throw new IllegalArgumentException("Pile number out of index. ");
+      if (destPileNumber >= SUITTYPENUM || destPileNumber < 0) {
+        throw new IllegalArgumentException("Pile number out of index.");
       }
 
       targetList = foundationPile.get(destPileNumber);
@@ -165,7 +171,7 @@ public class FreecellModel implements FreecellOperations {
 
       } else {
 
-        Card topCard = (Card)targetList.get(targetList.size() - 1);
+        Card topCard = (Card) targetList.get(targetList.size() - 1);
 
         if (topCard.getType() == currentCard.getType()
                 && topCard.getRank() + 1 == currentCard.getRank()) {
@@ -179,8 +185,8 @@ public class FreecellModel implements FreecellOperations {
 
     else if (destination == PileType.OPEN) {
 
-      if (destPileNumber >= opens) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index. ");
+      if (destPileNumber >= opens || destPileNumber < 0) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index.");
       }
 
       targetList = openPile;
@@ -196,8 +202,8 @@ public class FreecellModel implements FreecellOperations {
 
     else {
 
-      if (destPileNumber >= cascades) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index. ");
+      if (destPileNumber >= cascades || destPileNumber < 0) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index.");
       }
 
       targetList = cascadePile.get(destPileNumber);
@@ -206,7 +212,7 @@ public class FreecellModel implements FreecellOperations {
         movable = true;
       } else {
 
-        Card topCard = (Card)targetList.get(targetList.size() - 1);
+        Card topCard = (Card) targetList.get(targetList.size() - 1);
 
         if (topCard.getColor() != currentCard.getColor()
                 && topCard.getRank() - 1 == currentCard.getRank()) {
@@ -254,6 +260,9 @@ public class FreecellModel implements FreecellOperations {
 
   public String getGameState() {
     String ans = "";
+    if (!this.startGameFlag) {
+      return ans;
+    }
     for (int i = 0; i < this.SUITTYPENUM; i++) {
       ans += "F" + Integer.toString(i + 1) + ":";
       for (int j = 0; j < this.foundationPile.get(i).size() - 1; j++) {

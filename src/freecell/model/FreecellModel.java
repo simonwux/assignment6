@@ -87,6 +87,7 @@ public class FreecellModel implements FreecellOperations {
     // Get the current card to be move.
 
     Card currentCard;
+    List sourceList;
 
     if (source == PileType.OPEN) {
 
@@ -101,6 +102,7 @@ public class FreecellModel implements FreecellOperations {
       }
 
       currentCard = openPile.get(pileNumber);
+      sourceList = openPile;
 
     } else if (source == PileType.CASCADE) { // Only the top card of a cascade pile can be moved.
 
@@ -108,39 +110,40 @@ public class FreecellModel implements FreecellOperations {
         throw new IllegalArgumentException("Pile number out of index. ");
       }
 
-      List targetPile = cascadePile.get(pileNumber);
+      sourceList = cascadePile.get(pileNumber);
 
-      if (targetPile.isEmpty()) { // When the pile is empty, there is no element in the list.
+      if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
         throw new IllegalArgumentException("Target pile does not contain any card.");
       }
 
-      if (cardIndex != targetPile.size() - 1) {
+      if (cardIndex != sourceList.size() - 1) {
         throw new IllegalArgumentException("Card to be move is not top card of a cascade pile.");
       }
 
-      currentCard = (Card) targetPile.get(cardIndex);
+      currentCard = (Card) sourceList.get(cardIndex);
 
-    } else if (source == PileType.FOUNDATION) {
+    } else {
 
       if (pileNumber >= SUITTYPENUM) { //suppose 0 1 2 3
         throw new IllegalArgumentException("Pile number out of index. ");
       }
 
-      List targetPile = foundationPile.get(pileNumber);
+      sourceList = foundationPile.get(pileNumber);
 
-      if (targetPile.isEmpty()) { // When the pile is empty, there is no element in the list.
+      if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
         throw new IllegalArgumentException("Target pile does not contain any card.");
       }
 
-      if (cardIndex != targetPile.size() - 1) {
+      if (cardIndex != sourceList.size() - 1) {
         throw new IllegalArgumentException("Card to be move is not top card of a foundation pile.");
       }
 
-      currentCard = (Card) targetPile.get(cardIndex);
+      currentCard = (Card) sourceList.get(cardIndex);
 
     }
 
     boolean movable = false;
+    List targetList;
 
     // A card can be added added to a foundation iff its suit match that of the pile, and its value
     // is one more that that of the card currently one top of the pile. If the foundation pile is
@@ -148,11 +151,89 @@ public class FreecellModel implements FreecellOperations {
 
     if (destination == PileType.FOUNDATION) {
 
+      if (destPileNumber >= SUITTYPENUM) {
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
 
+      targetList = foundationPile.get(destPileNumber);
+
+      if (targetList.isEmpty()) {
+
+        if (currentCard.getRank() == 1) {
+          movable = true;
+        }
+
+      } else {
+
+        Card topCard = (Card)targetList.get(targetList.size() - 1);
+
+        if (topCard.getType() == currentCard.getType()
+                && topCard.getRank() + 1 == currentCard.getRank()) {
+          movable = true;
+        }
+      }
 
     }
 
+    // An open pile may contain at most one card.
 
+    else if (destination == PileType.OPEN) {
+
+      if (destPileNumber >= opens) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
+
+      targetList = openPile;
+
+      if (targetList.get(destPileNumber) == null) {
+        movable = true;
+      }
+    }
+
+    // However, a card from some pile can be moved to the end of a cascade pile if and only if
+    // its color is different from that of the currently last card, and its value is exactly one
+    // less than that of the currently last card
+
+    else {
+
+      if (destPileNumber >= cascades) { //suppose 0 1 2 3
+        throw new IllegalArgumentException("Pile number out of index. ");
+      }
+
+      targetList = cascadePile.get(destPileNumber);
+
+      if (targetList.isEmpty()) {
+        movable = true;
+      } else {
+
+        Card topCard = (Card)targetList.get(targetList.size() - 1);
+
+        if (topCard.getColor() != currentCard.getColor()
+                && topCard.getRank() - 1 == currentCard.getRank()) {
+          movable = true;
+        }
+      }
+
+    }
+
+    // now we do the move.
+
+    if (!movable) {
+      throw new IllegalArgumentException("The move is not valid.");
+    } else {
+
+      if (sourceList == openPile) {
+        sourceList.set(pileNumber, null);
+      } else {
+        sourceList.remove(currentCard);
+      }
+
+      if (targetList == openPile) {
+        targetList.set(destPileNumber, currentCard);
+      } else {
+        targetList.add(currentCard);
+      }
+    }
   }
 
   public boolean isGameOver() {

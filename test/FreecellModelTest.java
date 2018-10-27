@@ -49,6 +49,25 @@ public class FreecellModelTest {
 
   @Test
   public void getDeck() {
+    try {
+      FreecellOperations a = gameOne = FreecellModel
+              .getBuilder()
+              .cascades(1)
+              .opens(1)
+              .build();
+    } catch (IllegalArgumentException e) {
+      assertEquals("Cascades should be at least 4.", e.getMessage());
+    }
+
+    try {
+      FreecellOperations a = gameOne = FreecellModel
+              .getBuilder()
+              .cascades(4)
+              .opens(1)
+              .build();
+    } catch (IllegalArgumentException e) {
+      assertEquals("Opens should be at least 1.", e.getMessage());
+    }
   }
 
   @Test
@@ -87,13 +106,13 @@ public class FreecellModelTest {
   @Test
   public void move() {
 
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
     gameOne.move(PileType.CASCADE, 3, 6, PileType.FOUNDATION, 0);
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
     gameOne.move(PileType.FOUNDATION, 0, 0, PileType.FOUNDATION, 1);
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
     gameOne.move(PileType.CASCADE, 2, 6, PileType.FOUNDATION, 1);
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
 
     try {
       gameOne.move(PileType.CASCADE, 0, 6, PileType.FOUNDATION, 1);
@@ -110,10 +129,10 @@ public class FreecellModelTest {
     }
 
     gameOne.move(PileType.CASCADE, 1, 6, PileType.FOUNDATION, 1);
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
 
     gameOne.move(PileType.CASCADE, 7, 5, PileType.OPEN, 0);
-    System.out.println(gameOne.getGameState());
+    //System.out.println(gameOne.getGameState());
 
     try {
       gameOne.move(PileType.CASCADE, 6, 5, PileType.OPEN, 0);

@@ -82,7 +82,7 @@ public class FreecellModel implements FreecellOperations {
         this.cascadePile.get(i).add((Card) deck.get(j));
       }
     }
-    System.out.println(this.cascadePile);
+    //System.out.println(this.cascadePile);
   }
 
   public void move(PileType source, int pileNumber, int cardIndex, PileType destination, int destPileNumber) throws IllegalArgumentException, IllegalStateException {
@@ -295,7 +295,7 @@ public class FreecellModel implements FreecellOperations {
       }
       ans += "\n";
     }
-    return ans;
+    return ans.substring(0, ans.length() - 1);
   }
 
   private void shuffle(List deck) {
@@ -348,16 +348,16 @@ public class FreecellModel implements FreecellOperations {
     }
 
     public FreecellOperationsBuilder cascades(int c) {
-      if (c <= 0) {
-        throw new IllegalArgumentException("Cascades should bigger than 0.");
+      if (c < 4) {
+        throw new IllegalArgumentException("Cascades should be at least 4.");
       }
       this.cascades = c;
       return this;
     }
 
     public FreecellOperationsBuilder opens(int o) {
-      if (o <= 0) {
-        throw new IllegalArgumentException("Opens should bigger than 0.");
+      if (o < 1) {
+        throw new IllegalArgumentException("Opens should be at least 1.");
       }
       this.opens = o;
       return this;

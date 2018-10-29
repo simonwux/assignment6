@@ -18,8 +18,12 @@ public class CardTest {
   private Card cardFive;
   private Card cardSix;
 
+  /**
+   * The method set up several cards for following testing.
+   */
+
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
     cardOne = new Card(CardType.SPADES, 1);
     cardTwo = new Card(CardType.SPADES, 13);
     cardThree = new Card(CardType.HEARTS, 8);
@@ -78,7 +82,7 @@ public class CardTest {
   }
 
   @Test
-  public void equals() {
+  public void test_equals() {
     assertEquals(cardThree, cardFour);
     assertNotEquals(cardOne, cardFive);
     assertNotEquals(cardOne, cardTwo);

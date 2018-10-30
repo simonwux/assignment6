@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b3ae9ec2-3f93-4077-9877-2b1e4e19460b" name="Default" comment="">
+    <list default="true" id="b3ae9ec2-3f93-4077-9877-2b1e4e19460b" name="Default" comment="Add Javadocs for most of the file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment6/freecell/model/Card.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment6/freecell/model/Card.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment6/freecell/model/FreecellModel$FreecellOperationsBuilderImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment6/freecell/model/FreecellModel$FreecellOperationsBuilderImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/assignment6/freecell/model/FreecellModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/assignment6/freecell/model/FreecellModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/assignment6/CardTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/assignment6/CardTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/assignment6/FreecellModelTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/assignment6/FreecellModelTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Hw02TypeChecks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Hw02TypeChecks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test/FreecellModelTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/FreecellModelTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -23,28 +30,38 @@
     <session id="-1747281349">
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="6" />
+          <entry key="java" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="6" />
+          <entry key="JAVA" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="2634" />
+          <entry key="java" value="5868" />
+          <entry key="txt" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="2634" />
+          <entry key="JAVA" value="5868" />
+          <entry key="PLAIN_TEXT" value="67" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts" />
       <usages-collector id="statistics.vcs.git.usages" />
       <usages-collector id="statistics.spring.boot.run.usages" />
-      <usages-collector id="statistics.lifecycle.project" />
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="3" />
+          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="3" />
+        </counts>
+      </usages-collector>
       <usages-collector id="statistics.spring.boot.mvc.usages" />
     </session>
   </component>
@@ -53,11 +70,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-16">
-              <caret line="240" column="7" selection-start-line="240" selection-start-column="7" selection-end-line="240" selection-end-column="7" />
+            <state relative-caret-position="1890">
+              <caret line="126" column="66" lean-forward="true" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
               <folding>
-                <element signature="e#8112#8113#0" expanded="true" />
-                <element signature="e#8147#8148#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/test/FreecellModelTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,8 +94,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-4">
-              <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
+            <state relative-caret-position="1035">
+              <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="69" selection-end-column="11" />
             </state>
           </provider>
         </entry>
@@ -75,8 +103,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+            <state relative-caret-position="330">
+              <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="25" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -102,12 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-              <folding>
-                <element signature="e#455#456#0" expanded="true" />
-                <element signature="e#476#477#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="180">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -115,8 +139,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/test/CardTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="995">
-              <caret line="77" column="3" lean-forward="true" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="3" />
+            <state relative-caret-position="465">
+              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -127,17 +151,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Hw02TypeChecks.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/FreecellModelTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+            <state relative-caret-position="210">
+              <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -177,19 +195,19 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/FreecellOperations.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java" />
         <option value="$PROJECT_DIR$/src/freecell/model/Hw02TypeChecks.java" />
         <option value="$PROJECT_DIR$/src/freecell/model/PileType.java" />
-        <option value="$PROJECT_DIR$/src/Hw02TypeChecks.java" />
         <option value="$PROJECT_DIR$/src/freecell/model/CardType.java" />
         <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilderImpl.java" />
         <option value="$PROJECT_DIR$/src/freecell/model/Color.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/Card.java" />
         <option value="$PROJECT_DIR$/test/freecell/model/FreecellModelTest.java" />
         <option value="$PROJECT_DIR$/test/freecell/model/CardTest.java" />
         <option value="$PROJECT_DIR$/test/FreecellOperationsTest.java" />
-        <option value="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" />
+        <option value="$PROJECT_DIR$/src/freecell/model/Card.java" />
+        <option value="$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java" />
         <option value="$PROJECT_DIR$/test/CardTest.java" />
+        <option value="$PROJECT_DIR$/src/Hw02TypeChecks.java" />
+        <option value="$PROJECT_DIR$/src/freecell/model/FreecellModel.java" />
         <option value="$PROJECT_DIR$/test/FreecellModelTest.java" />
       </list>
     </option>
@@ -211,7 +229,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -239,8 +256,9 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -249,7 +267,7 @@
     <property name="Repository.Attach.Sources" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540361976634" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540933559675" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
   </component>
@@ -276,21 +294,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.FreecellModelTest.move">
-    <configuration default="true" type="Application" factoryName="Application">
+  <component name="RunManager" selected="JUnit.FreecellModelTest">
+    <configuration name="Hw02TypeChecks" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Hw02TypeChecks" />
+      <module name="assignment6" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CardTest.getColor" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="assignment6" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CardTest" />
-      <option name="METHOD_NAME" value="getColor" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -305,11 +319,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="FreecellModelTest.getDeck" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FreecellModelTest.getGameState" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="assignment6" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="FreecellModelTest" />
-      <option name="METHOD_NAME" value="getDeck" />
+      <option name="METHOD_NAME" value="getGameState" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -358,19 +372,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.CardTest.getColor" />
       <item itemvalue="JUnit.FreecellModelTest.move" />
-      <item itemvalue="JUnit.FreecellModelTest" />
       <item itemvalue="JUnit.FreecellModelTest.startGame" />
-      <item itemvalue="JUnit.FreecellModelTest.getDeck" />
+      <item itemvalue="Application.Hw02TypeChecks" />
+      <item itemvalue="JUnit.FreecellModelTest.getGameState" />
+      <item itemvalue="JUnit.FreecellModelTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.FreecellModelTest.move" />
-        <item itemvalue="JUnit.FreecellModelTest.getDeck" />
         <item itemvalue="JUnit.FreecellModelTest" />
+        <item itemvalue="JUnit.FreecellModelTest.move" />
+        <item itemvalue="JUnit.FreecellModelTest.getGameState" />
+        <item itemvalue="Application.Hw02TypeChecks" />
         <item itemvalue="JUnit.FreecellModelTest.startGame" />
-        <item itemvalue="JUnit.CardTest.getColor" />
       </list>
     </recent_temporary>
   </component>
@@ -389,6 +403,9 @@
       <workItem from="1540314052905" duration="152000" />
       <workItem from="1540314934042" duration="70000" />
       <workItem from="1540319994020" duration="2920000" />
+      <workItem from="1540410819989" duration="2764000" />
+      <workItem from="1540842513495" duration="5748000" />
+      <workItem from="1540933039285" duration="480000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit.">
       <created>1540254512832</created>
@@ -418,49 +435,63 @@
       <option name="project" value="LOCAL" />
       <updated>1540322769993</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Javadocs for most of the file">
+      <created>1540855124353</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1540855124353</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Add implementation of testMove()">
+      <created>1540873941731</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1540873941731</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 02m 55s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 21m 31s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 07m 42s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 22m 33s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 07m 54s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 23m 19s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 08m 39s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 23m 36s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 09m 06s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 24m 34s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 09m 59s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 26m 53s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 14m 13s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 29m 49s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 14m 53s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 30m 58s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 15m 20s.xml">
+    <history-entry file="FreecellModelTest_move - 2018.10.29 at 21h 31m 39s.xml">
       <configuration name="FreecellModelTest.move" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="FreecellModelTest_move - 2018.10.23 at 23h 15m 52s.xml">
-      <configuration name="FreecellModelTest.move" configurationId="JUnit" />
+    <history-entry file="FreecellModelTest - 2018.10.29 at 21h 31m 48s.xml">
+      <configuration name="FreecellModelTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27781000" />
+    <option name="totallyTimeSpent" value="36850000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1440" height="801" extended-state="6" />
+    <frame x="0" y="22" width="1440" height="801" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24892704" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25965664" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -469,14 +500,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32722145" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32722145" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="CheckStyle" order="7" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32872927" />
-      <window_info anchor="bottom" id="Messages" order="9" weight="0.32596686" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32863188" />
+      <window_info anchor="bottom" id="Messages" order="9" weight="0.325811" />
       <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.325811" />
       <window_info anchor="bottom" id="Event Log" order="12" side_tool="true" />
@@ -534,7 +565,9 @@
     <MESSAGE value="Make the builder in the model." />
     <MESSAGE value="Change check duplicate in a deck from &quot;list&quot; to &quot;set&quot;.&#10;Implement startGame().&#10;Add Color enum." />
     <MESSAGE value="Change check duplicate in a deck from &quot;list&quot; to &quot;set&quot;.&#10;Implement startGame().&#10;Add Color enum.&#10;Add FreecellModel's Unit Testing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Change check duplicate in a deck from &quot;list&quot; to &quot;set&quot;.&#10;Implement startGame().&#10;Add Color enum.&#10;Add FreecellModel's Unit Testing." />
+    <MESSAGE value="Add Javadocs for most of the file" />
+    <MESSAGE value="Add implementation of testMove()" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add implementation of testMove()" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.idea/checkstyle-idea.xml">
@@ -555,42 +588,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilderImpl.java" />
     <entry file="file://$PROJECT_DIR$/test/FreecellOperationsTest.java" />
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/PileType.java">
+    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Hw02TypeChecks.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
+        <state relative-caret-position="1035">
+          <caret line="69" column="11" selection-start-line="69" selection-start-column="11" selection-end-line="69" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperationsBuilder.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellOperations.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-16">
-          <caret line="240" column="7" selection-start-line="240" selection-start-column="7" selection-end-line="240" selection-end-column="7" />
-          <folding>
-            <element signature="e#8112#8113#0" expanded="true" />
-            <element signature="e#8147#8148#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="330">
+          <caret line="22" column="2" selection-start-line="22" selection-start-column="2" selection-end-line="25" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -610,19 +618,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/freecell/model/Card.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
-          <folding>
-            <element signature="e#455#456#0" expanded="true" />
-            <element signature="e#476#477#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="180">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/CardTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="995">
-          <caret line="77" column="3" lean-forward="true" selection-start-line="77" selection-start-column="3" selection-end-line="77" selection-end-column="3" />
+        <state relative-caret-position="465">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/freecell/model/PileType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Hw02TypeChecks.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="46" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/freecell/model/FreecellModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="126" column="66" lean-forward="true" selection-start-line="126" selection-start-column="66" selection-end-line="126" selection-end-column="66" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -631,8 +662,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test/FreecellModelTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="106" column="5" lean-forward="true" selection-start-line="106" selection-start-column="5" selection-end-line="106" selection-end-column="5" />
+        <state relative-caret-position="330">
+          <caret line="22" column="5" lean-forward="true" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -1,7 +1,6 @@
 import java.util.List;
 
 import freecell.model.FreecellModel;
-import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 
 
@@ -10,6 +9,11 @@ import freecell.model.PileType;
  */
 
 public class Hw02TypeChecks {
+
+  /**
+   * The method helps to check the functionality of FreecellOperationBuilder.
+   * @param args Not used in the circumstance.
+   */
 
   public static void main(String[] args) {
     helper(FreecellModel

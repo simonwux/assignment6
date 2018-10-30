@@ -10,14 +10,22 @@ import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 public class FreecellModelTest {
 
   private FreecellOperations<Object> gameOne;
 
+  /**
+   * The method pre-set some Freecell Model for test purpose.
+   */
+
   @Before
-  public void setUp() throws Exception {
+  public void setUp() {
 
     gameOne = FreecellModel
             .getBuilder()
@@ -380,9 +388,5 @@ public class FreecellModelTest {
             "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
             "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
             "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
-  }
-
-  @Test
-  public void getBuilder() {
   }
 }

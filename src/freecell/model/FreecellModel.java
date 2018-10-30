@@ -122,7 +122,9 @@ public class FreecellModel implements FreecellOperations {
    * @throws IllegalStateException    if a move is attempted before the game has starts
    */
 
-  public void move(PileType source, int pileNumber, int cardIndex, PileType destination, int destPileNumber) throws IllegalArgumentException, IllegalStateException {
+  public void move(PileType source, int pileNumber, int cardIndex,
+                   PileType destination, int destPileNumber)
+          throws IllegalArgumentException, IllegalStateException {
 
     if (!this.startGameFlag) {
       throw new IllegalStateException("The game has not started.");

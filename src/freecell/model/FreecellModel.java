@@ -20,8 +20,9 @@ public class FreecellModel implements FreecellOperations {
 
   /**
    * The constructor build up a Freecell game with provides number of cascade piles and open piles.
+   *
    * @param cascades Number of cascade pile.
-   * @param opens Number of open pile.
+   * @param opens    Number of open pile.
    */
 
   private FreecellModel(int cascades, int opens) {
@@ -418,8 +419,9 @@ public class FreecellModel implements FreecellOperations {
     }
 
     /**
-     * The builder method helps tp construct game with step-by-step assigning value process.
-     * The particular method defines the number of cascade pile in the game.
+     * The builder method helps tp construct game with step-by-step assigning value process. The
+     * particular method defines the number of cascade pile in the game.
+     *
      * @param c The number cascade pile.
      * @return The builder for the following construction.
      */
@@ -433,8 +435,9 @@ public class FreecellModel implements FreecellOperations {
     }
 
     /**
-     * The builder method helps tp construct game with step-by-step assigning value process.
-     * The particular method defines the number of open pile in the game.
+     * The builder method helps tp construct game with step-by-step assigning value process. The
+     * particular method defines the number of open pile in the game.
+     *
      * @param o The number open pile.
      * @return The builder for the following construction.
      */
@@ -449,6 +452,7 @@ public class FreecellModel implements FreecellOperations {
 
     /**
      * The method actually do the construction of the game.
+     *
      * @return The Freecell game with given parameter above.
      */
 

@@ -76,6 +76,11 @@ public class FreecellModelTest {
     } catch (IllegalArgumentException e) {
       assertEquals("Opens should be at least 1.", e.getMessage());
     }
+
+    assertEquals("[A♠, A♦, A♥, A♣, 2♠, 2♦, 2♥, 2♣, 3♠, 3♦, 3♥, 3♣, 4♠, 4♦, 4♥, "
+                    + "4♣, 5♠, 5♦, 5♥, 5♣, 6♠, 6♦, 6♥, 6♣, 7♠, 7♦, 7♥, 7♣, 8♠, 8♦, 8♥, 8♣, 9♠, 9♦, "
+                    + "9♥, 9♣, 10♠, 10♦, 10♥, 10♣, J♠, J♦, J♥, J♣, Q♠, Q♦, Q♥, Q♣, K♠, K♦, K♥, K♣]",
+            gameOne.getDeck().toString());
   }
 
   @Test
@@ -92,23 +97,38 @@ public class FreecellModelTest {
             .opens(4)
             .build();
     b.startGame(b.getDeck(), true);
-    assertEquals("F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n" +
-            "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n" +
-            "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n" +
-            "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n" +
-            "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n" +
-            "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n" +
-            "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n" +
-            "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣", a.getGameState());
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n"
+            + "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n"
+            + "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n"
+            + "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n"
+            + "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n"
+            + "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n"
+            + "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n"
+            + "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣", a.getGameState());
     assertNotEquals(a.getGameState(), b.getGameState());
+    FreecellOperations<Object> c = FreecellModel
+            .getBuilder()
+            .cascades(4)
+            .opens(1)
+            .build();
+    c.startGame(c.getDeck(), false);
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "C1: A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠\n"
+            + "C2: A♦, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, 10♦, J♦, Q♦, K♦\n"
+            + "C3: A♥, 2♥, 3♥, 4♥, 5♥, 6♥, 7♥, 8♥, 9♥, 10♥, J♥, Q♥, K♥\n"
+            + "C4: A♣, 2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, 10♣, J♣, Q♣, K♣", c.getGameState());
   }
 
   @Test
@@ -172,58 +192,58 @@ public class FreecellModelTest {
 
     // move an A to empty foundation pile
     gameOne.move(PileType.CASCADE, 3, 6, PileType.FOUNDATION, 0);
-    assertEquals("F1: A♦\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1: A♦\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
 
     // move an A from a open pile to another foundation pile
     gameOne.move(PileType.FOUNDATION, 0, 0, PileType.FOUNDATION, 1);
-    assertEquals("F1:\n" +
-            "F2: A♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
     gameOne.move(PileType.CASCADE, 2, 6, PileType.FOUNDATION, 1);
-    assertEquals("F1:\n" +
-            "F2: A♦, 2♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦, 2♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
 
     // invalid move: move a invalid card to a non-empty foundation pile
     try {
@@ -251,22 +271,22 @@ public class FreecellModelTest {
 
     // move a card to an open pile
     gameOne.move(PileType.CASCADE, 1, 6, PileType.OPEN, 1);
-    assertEquals("F1:\n" +
-            "F2: A♦, 2♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2: 3♦\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦, 2♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2: 3♦\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
 
     // invalid move: move a cart to a non-empty open pile
     try {
@@ -280,22 +300,22 @@ public class FreecellModelTest {
 
     // move a valid card to cascade pile
     gameOne.move(PileType.OPEN, 1, 0, PileType.CASCADE, 3);
-    assertEquals("F1:\n" +
-            "F2: A♦, 2♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1: 9♦\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 3♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦, 2♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1: 9♦\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 3♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
 
     // invalid move: move a card to a non-empty cascade pile
     try {
@@ -323,70 +343,69 @@ public class FreecellModelTest {
         }
       }
     }
-    //System.out.println(gameOne.getGameState());
     assertTrue(gameOne.isGameOver());
   }
 
   @Test
   public void getGameState() {
-    assertEquals("F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦, A♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦, A♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦", gameOne.getGameState());
     gameOne.move(PileType.CASCADE, 3, 6, PileType.FOUNDATION, 0);
     gameOne.move(PileType.FOUNDATION, 0, 0, PileType.FOUNDATION, 1);
     gameOne.move(PileType.CASCADE, 2, 6, PileType.FOUNDATION, 1);
     gameOne.move(PileType.CASCADE, 1, 6, PileType.FOUNDATION, 1);
     gameOne.move(PileType.CASCADE, 7, 5, PileType.OPEN, 0);
-    assertEquals("F1:\n" +
-            "F2: A♦, 2♦, 3♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1: 5♦\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦, 2♦, 3♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1: 5♦\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
     try {
       gameOne.move(PileType.CASCADE, 6, 5, PileType.OPEN, 0);
       fail("The move should be invalid");
     } catch (IllegalArgumentException e) {
       // do nothing.
     }
-    assertEquals("F1:\n" +
-            "F2: A♦, 2♦, 3♦\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1: 5♦\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
+    assertEquals("F1:\n"
+            + "F2: A♦, 2♦, 3♦\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1: 5♦\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
   }
 }

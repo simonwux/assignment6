@@ -134,6 +134,7 @@ public class FreecellMultiMoveModel implements FreecellOperations{
     }
     // Get the current card to be move.
 
+    boolean multipleMove = false;
     Card currentCard;
     List sourceList;
 
@@ -152,7 +153,9 @@ public class FreecellMultiMoveModel implements FreecellOperations{
       currentCard = openPile.get(pileNumber);
       sourceList = openPile;
 
-    } else if (source == PileType.CASCADE) { // Only the top card of a cascade pile can be moved.
+    } else if (source == PileType.CASCADE) {
+
+      // modify here to support multiple move. and multimove cannot move to open pile.
 
       if (pileNumber >= cascades || pileNumber < 0) { //suppose 0 1 2 3
         throw new IllegalArgumentException("Pile number out of index.");
@@ -164,11 +167,45 @@ public class FreecellMultiMoveModel implements FreecellOperations{
         throw new IllegalArgumentException("Source pile does not contain any card.");
       }
 
-      if (cardIndex != sourceList.size() - 1) {
-        throw new IllegalArgumentException("Card to be move is not top card of a cascade pile.");
+      if (cardIndex >= sourceList.size() || cardIndex < 0) {
+        throw new IllegalArgumentException("Card index is invalid.");
       }
 
       currentCard = (Card) sourceList.get(cardIndex);
+      int moveNum = 1;
+      int emptyCascade = 0;
+      int emptyOpen = 0;
+      Card lastCard = new Card(currentCard.getType(), currentCard.getRank());
+
+      for (int i = cardIndex + 1; i < sourceList.size(); i++) {
+        Card card = (Card)sourceList.get(i);
+        if (card.getColor() == lastCard.getColor() || card.getRank() + 1 != lastCard.getRank()) {
+          throw new IllegalArgumentException("Multi-move on cards out of order");
+        }
+        lastCard = card;
+        moveNum ++;
+      }
+
+      if (moveNum > 1) {
+
+        for (int i = 0; i < cascadePile.size(); i++) {
+          if (cascadePile.get(i).isEmpty()) {
+            emptyCascade++;
+          }
+        }
+
+        for (int i = 0; i < openPile.size(); i++) {
+          if (openPile.get(i) == null) {
+            emptyOpen++;
+          }
+        }
+
+        if (moveNum > (emptyOpen + 1) * Math.pow(2.0, emptyCascade)) {
+          throw new IllegalArgumentException("There is not enough space for that many card move.");
+        }
+
+        multipleMove = true;
+      }
 
     } else {
 
@@ -199,6 +236,10 @@ public class FreecellMultiMoveModel implements FreecellOperations{
 
     if (destination == PileType.FOUNDATION) {
 
+      if (multipleMove) {
+        throw new IllegalArgumentException("Cannot multi-move to foundation");
+      }
+
       if (destPileNumber >= SUITTYPENUM || destPileNumber < 0) {
         throw new IllegalArgumentException("Pile number out of index.");
       }
@@ -226,6 +267,10 @@ public class FreecellMultiMoveModel implements FreecellOperations{
     // An open pile may contain at most one card.
 
     else if (destination == PileType.OPEN) {
+
+      if (multipleMove) {
+        throw new IllegalArgumentException("Cannot multi-move to open");
+      }
 
       if (destPileNumber >= opens || destPileNumber < 0) { //suppose 0 1 2 3
         throw new IllegalArgumentException("Pile number out of index.");
@@ -268,6 +313,9 @@ public class FreecellMultiMoveModel implements FreecellOperations{
 
     if (!movable) {
       throw new IllegalArgumentException("The move is not valid.");
+    } else if (multipleMove) {
+      List<Card> toMove = sourceList.subList(cardIndex, sourceList.size() - 1);
+      targetList.addAll(toMove);
     } else {
 
       if (sourceList == openPile) {

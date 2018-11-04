@@ -21,7 +21,7 @@ public class FreecellController implements IFreecellController {
     this.out = ap;
   }
 
-  private String input(Scanner scan) {
+  private String input(Scanner scan) throws IllegalStateException {
     String st;
     try {
       st = scan.next();
@@ -31,7 +31,7 @@ public class FreecellController implements IFreecellController {
     return st;
   }
 
-  private void output(String st) {
+  private void output(String st) throws IllegalStateException {
     try {
       this.out.append(st);
     } catch (IOException e) {

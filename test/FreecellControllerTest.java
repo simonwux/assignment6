@@ -15,5 +15,6 @@ public class FreecellControllerTest {
   @Test
   public void playGame() {
     ControllerTypeChecks.checkSignatures();
+    //MultiMoveModelTypeChecks.checkSignatures();
   }
 }

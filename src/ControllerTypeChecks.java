@@ -18,9 +18,9 @@ import java.io.StringReader;
 import java.util.List;
 
 /**
- * This class is provided to check that your code implements the expected API.
- * If your code compiles with an unmodified version of this class, then it very
- * likely will also compile with the tests that we use to evaluate your code.
+ * This class is provided to check that your code implements the expected API. If your code compiles
+ * with an unmodified version of this class, then it very likely will also compile with the tests
+ * that we use to evaluate your code.
  */
 public class ControllerTypeChecks {
 
@@ -44,6 +44,14 @@ public class ControllerTypeChecks {
             FreecellMultiMoveModel.getBuilder().build(),
 
             new FreecellController(stringReader, out));
+    checkNewController(
+            FreecellModel.getBuilder().build(),
+
+            new FreecellController(stringReader, out));
+    checkNewController(
+            FreecellMultiMoveModel.getBuilder().build(),
+
+            new FreecellController(stringReader, out));
   }
 
   // This doesn't really need to be a dynamic method, since it doesn't use `this`
@@ -52,16 +60,15 @@ public class ControllerTypeChecks {
     String input = "4 3";
 
     try {
-      controller.playGame(model.getDeck(), model,false);
-    }
-    catch (IllegalStateException e) {
+      controller.playGame(model.getDeck(), model, false);
+    } catch (IllegalStateException e) {
       //the input or output did not work
     }
   }
 
   static <K> void checkNewModel(FreecellOperations<K> model, List<K> deck) {
     List<K> initialDeck = model.getDeck();
-    model.startGame(initialDeck,false);
+    model.startGame(initialDeck, false);
     model.move(PileType.CASCADE, 0, 7, PileType.FOUNDATION, 0);
     String result = model.getGameState();
     boolean done = model.isGameOver();

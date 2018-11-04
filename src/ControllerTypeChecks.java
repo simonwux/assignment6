@@ -33,25 +33,25 @@ public class ControllerTypeChecks {
 //                    .build(),
 //            FreecellModel.getBuilder()
 //                    .build().getDeck());
-    stringReader = new StringReader("C1 8 F1 q");
+    stringReader = new StringReader("C1 8as F1 q");
     out = new StringBuffer();
     checkNewController(
             FreecellModel.getBuilder().build(),
 
             new FreecellController(stringReader, out));
 
-    checkNewController(
-            FreecellMultiMoveModel.getBuilder().build(),
-
-            new FreecellController(stringReader, out));
-    checkNewController(
-            FreecellModel.getBuilder().build(),
-
-            new FreecellController(stringReader, out));
-    checkNewController(
-            FreecellMultiMoveModel.getBuilder().build(),
-
-            new FreecellController(stringReader, out));
+//    checkNewController(
+//            FreecellMultiMoveModel.getBuilder().build(),
+//
+//            new FreecellController(stringReader, out));
+//    checkNewController(
+//            FreecellModel.getBuilder().build(),
+//
+//            new FreecellController(stringReader, out));
+//    checkNewController(
+//            FreecellMultiMoveModel.getBuilder().build(),
+//
+//            new FreecellController(stringReader, out));
   }
 
   // This doesn't really need to be a dynamic method, since it doesn't use `this`

@@ -22,7 +22,7 @@ public class FreecellController implements IFreecellController {
   }
 
   private String input(Scanner scan) throws IllegalStateException {
-    String st;
+    String st = "";
     try {
       st = scan.next();
     } catch (NoSuchElementException e) {
@@ -61,6 +61,15 @@ public class FreecellController implements IFreecellController {
     return result;
   }
 
+  private boolean isNumeric(String input) {
+    try {
+      Integer.parseInt(input);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
+  }
+
   @Override
   public void playGame(List deck, FreecellOperations model, boolean shuffle)
           throws IllegalArgumentException, IllegalStateException {
@@ -80,13 +89,16 @@ public class FreecellController implements IFreecellController {
     Scanner scan = new Scanner(this.in);
     //a = scan.next();
     while (true) {
+      sourceIndex = -1;
+      sourceType = null;
+      cardIndex = -1;
+      targetType = null;
+      targetIndex = -1;
       output(model.getGameState() + "\n");
       while (true) {
         a = input(scan);
-        System.out.println(a);
         if (isQuit(a)) {
           output("Game quit prematurely.\n");
-          // System.out.println(this.out.toString());
           return;
         }
         if (isInvalidPile(a)) {
@@ -95,11 +107,11 @@ public class FreecellController implements IFreecellController {
         }
         try {
           sourceIndex = Integer.parseInt(a.substring(1));
-        } catch (IllegalArgumentException e) {
+          sourceIndex -= 1;
+        } catch (NumberFormatException e) {
           output("Invalid source pile index, input again.\n");
           continue;
         }
-        sourceIndex -= 1;
 
         sourceType = getType(a);
         break;
@@ -107,20 +119,20 @@ public class FreecellController implements IFreecellController {
 
       while (true) {
         b = input(scan);
-        if (b == "q" || b == "Q") {
+        if (b.equals("q") || b.equals("Q")) {
           output("Game quit prematurely.\n");
           return;
         }
+
         try {
           cardIndex = Integer.parseInt(b);
-        } catch (IllegalArgumentException e) {
+          cardIndex -= 1;
+        } catch (Exception e) {
           output("Invalid card index, input again.\n");
           continue;
         }
-        cardIndex -= 1;
         break;
       }
-
 
       while (true) {
         c = input(scan);
@@ -134,22 +146,17 @@ public class FreecellController implements IFreecellController {
         }
         try {
           targetIndex = Integer.parseInt(c.substring(1));
-        } catch (IllegalArgumentException e) {
+          targetIndex -= 1;
+        } catch (NumberFormatException e) {
           output("Invalid source pile index, input again.\n");
           continue;
         }
-        targetIndex -= 1;
 
         targetType = getType(c);
         break;
       }
 
       try {
-//        System.out.println(sourceType);
-//        System.out.println(sourceIndex);
-//        System.out.println(cardIndex);
-//        System.out.println(targetType);
-//        System.out.println(targetIndex);
         model.move(sourceType, sourceIndex, cardIndex, targetType, targetIndex);
       } catch (IllegalArgumentException e) {
         output("Invalid move. Try again. " + e.getMessage() + "\n");

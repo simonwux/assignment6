@@ -186,23 +186,24 @@ public class FreecellMultiMoveModel implements FreecellOperations{
         moveNum ++;
       }
 
-      for (int i = 0; i < cascadePile.size(); i++) {
-        if (cascadePile.get(i).isEmpty()) {
-          emptyCascade++;
-        }
-      }
-
-      for (int i = 0; i < openPile.size(); i++) {
-        if (openPile.get(i) == null) {
-          emptyOpen++;
-        }
-      }
-
-      if (moveNum > (emptyOpen + 1) * Math.pow(2.0, emptyCascade)) {
-        throw new IllegalArgumentException("There is not enough space for that many card move.");
-      }
-
       if (moveNum > 1) {
+
+        for (int i = 0; i < cascadePile.size(); i++) {
+          if (cascadePile.get(i).isEmpty()) {
+            emptyCascade++;
+          }
+        }
+
+        for (int i = 0; i < openPile.size(); i++) {
+          if (openPile.get(i) == null) {
+            emptyOpen++;
+          }
+        }
+
+        if (moveNum > (emptyOpen + 1) * Math.pow(2.0, emptyCascade)) {
+          throw new IllegalArgumentException("There is not enough space for that many card move.");
+        }
+
         multipleMove = true;
       }
 

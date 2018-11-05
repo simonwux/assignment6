@@ -234,8 +234,9 @@ public class FreecellMultiMoveModel extends FreecellModelAbstract {
     if (!movable) {
       throw new IllegalArgumentException("The move is not valid.");
     } else if (multipleMove) {
-      List<Card> toMove = sourceList.subList(cardIndex, sourceList.size() - 1);
+      List<Card> toMove = sourceList.subList(cardIndex, sourceList.size());
       targetList.addAll(toMove);
+      sourceList.subList(cardIndex, sourceList.size()).clear();
     } else {
 
       if (sourceList == openPile) {

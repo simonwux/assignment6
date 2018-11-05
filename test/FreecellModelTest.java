@@ -21,6 +21,7 @@ public class FreecellModelTest {
 
   private FreecellOperations<Object> gameOne;
   private FreecellOperations<Object> gameTwo;
+  private List deck;
 
   /**
    * The method pre-set some Freecell Model for test purpose.
@@ -37,7 +38,7 @@ public class FreecellModelTest {
 
     gameTwo = FreecellMultiMoveModel.getBuilder().cascades(8).opens(4).build();
 
-    List deck = new ArrayList<>();
+    deck = new ArrayList<>();
 
     for (int i = 13; i > 0; i--) {
       deck.add(new Card(CardType.SPADES, i));
@@ -606,5 +607,214 @@ public class FreecellModelTest {
             + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
             + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
             + "C8: 6♠, J♥, 3♥, 8♣, K♦", gameOne.getGameState());
+  }
+
+  @Test
+  public void testMultiMove() {
+    FreecellOperations<Object> gameThree = FreecellMultiMoveModel
+            .getBuilder()
+            .cascades(52)
+            .opens(1)
+            .build();
+
+    gameThree.startGame(deck, false);
+
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "C1: K♠\n"
+            + "C2: Q♠\n"
+            + "C3: J♠\n"
+            + "C4: 10♠\n"
+            + "C5: 9♠\n"
+            + "C6: 8♠\n"
+            + "C7: 7♠\n"
+            + "C8: 6♠\n"
+            + "C9: 5♠\n"
+            + "C10: 4♠\n"
+            + "C11: 3♠\n"
+            + "C12: 2♠\n"
+            + "C13: A♠\n"
+            + "C14: K♥\n"
+            + "C15: Q♥\n"
+            + "C16: J♥\n"
+            + "C17: 10♥\n"
+            + "C18: 9♥\n"
+            + "C19: 8♥\n"
+            + "C20: 7♥\n"
+            + "C21: 6♥\n"
+            + "C22: 5♥\n"
+            + "C23: 4♥\n"
+            + "C24: 3♥\n"
+            + "C25: 2♥\n"
+            + "C26: A♥\n"
+            + "C27: K♣\n"
+            + "C28: Q♣\n"
+            + "C29: J♣\n"
+            + "C30: 10♣\n"
+            + "C31: 9♣\n"
+            + "C32: 8♣\n"
+            + "C33: 7♣\n"
+            + "C34: 6♣\n"
+            + "C35: 5♣\n"
+            + "C36: 4♣\n"
+            + "C37: 3♣\n"
+            + "C38: 2♣\n"
+            + "C39: A♣\n"
+            + "C40: K♦\n"
+            + "C41: Q♦\n"
+            + "C42: J♦\n"
+            + "C43: 10♦\n"
+            + "C44: 9♦\n"
+            + "C45: 8♦\n"
+            + "C46: 7♦\n"
+            + "C47: 6♦\n"
+            + "C48: 5♦\n"
+            + "C49: 4♦\n"
+            + "C50: 3♦\n"
+            + "C51: 2♦\n"
+            + "C52: A♦", gameThree.getGameState());
+
+    gameThree.move(PileType.CASCADE, 51, 0, PileType.CASCADE, 37);
+    gameThree.move(PileType.CASCADE, 37, 0, PileType.CASCADE, 49);
+    gameThree.move(PileType.CASCADE, 49, 0, PileType.CASCADE, 35);
+    gameThree.move(PileType.CASCADE, 35, 0, PileType.CASCADE, 47);
+    gameThree.move(PileType.CASCADE, 47, 0, PileType.CASCADE, 33);
+    gameThree.move(PileType.CASCADE, 33, 0, PileType.CASCADE, 45);
+    gameThree.move(PileType.CASCADE, 45, 0, PileType.CASCADE, 31);
+    gameThree.move(PileType.CASCADE, 31, 0, PileType.CASCADE, 43);
+
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "C1: K♠\n"
+            + "C2: Q♠\n"
+            + "C3: J♠\n"
+            + "C4: 10♠\n"
+            + "C5: 9♠\n"
+            + "C6: 8♠\n"
+            + "C7: 7♠\n"
+            + "C8: 6♠\n"
+            + "C9: 5♠\n"
+            + "C10: 4♠\n"
+            + "C11: 3♠\n"
+            + "C12: 2♠\n"
+            + "C13: A♠\n"
+            + "C14: K♥\n"
+            + "C15: Q♥\n"
+            + "C16: J♥\n"
+            + "C17: 10♥\n"
+            + "C18: 9♥\n"
+            + "C19: 8♥\n"
+            + "C20: 7♥\n"
+            + "C21: 6♥\n"
+            + "C22: 5♥\n"
+            + "C23: 4♥\n"
+            + "C24: 3♥\n"
+            + "C25: 2♥\n"
+            + "C26: A♥\n"
+            + "C27: K♣\n"
+            + "C28: Q♣\n"
+            + "C29: J♣\n"
+            + "C30: 10♣\n"
+            + "C31: 9♣\n"
+            + "C32:\n"
+            + "C33: 7♣\n"
+            + "C34:\n"
+            + "C35: 5♣\n"
+            + "C36:\n"
+            + "C37: 3♣\n"
+            + "C38:\n"
+            + "C39: A♣\n"
+            + "C40: K♦\n"
+            + "C41: Q♦\n"
+            + "C42: J♦\n"
+            + "C43: 10♦\n"
+            + "C44: 9♦, 8♣, 7♦, 6♣, 5♦, 4♣, 3♦, 2♣, A♦\n"
+            + "C45: 8♦\n"
+            + "C46:\n"
+            + "C47: 6♦\n"
+            + "C48:\n"
+            + "C49: 4♦\n"
+            + "C50:\n"
+            + "C51: 2♦\n"
+            + "C52:", gameThree.getGameState());
+
+    gameThree.move(PileType.CASCADE, 43, 1, PileType.CASCADE, 17);
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "C1: K♠\n"
+            + "C2: Q♠\n"
+            + "C3: J♠\n"
+            + "C4: 10♠\n"
+            + "C5: 9♠\n"
+            + "C6: 8♠\n"
+            + "C7: 7♠\n"
+            + "C8: 6♠\n"
+            + "C9: 5♠\n"
+            + "C10: 4♠\n"
+            + "C11: 3♠\n"
+            + "C12: 2♠\n"
+            + "C13: A♠\n"
+            + "C14: K♥\n"
+            + "C15: Q♥\n"
+            + "C16: J♥\n"
+            + "C17: 10♥\n"
+            + "C18: 9♥, 8♣, 7♦, 6♣, 5♦, 4♣, 3♦, 2♣, A♦\n"
+            + "C19: 8♥\n"
+            + "C20: 7♥\n"
+            + "C21: 6♥\n"
+            + "C22: 5♥\n"
+            + "C23: 4♥\n"
+            + "C24: 3♥\n"
+            + "C25: 2♥\n"
+            + "C26: A♥\n"
+            + "C27: K♣\n"
+            + "C28: Q♣\n"
+            + "C29: J♣\n"
+            + "C30: 10♣\n"
+            + "C31: 9♣\n"
+            + "C32:\n"
+            + "C33: 7♣\n"
+            + "C34:\n"
+            + "C35: 5♣\n"
+            + "C36:\n"
+            + "C37: 3♣\n"
+            + "C38:\n"
+            + "C39: A♣\n"
+            + "C40: K♦\n"
+            + "C41: Q♦\n"
+            + "C42: J♦\n"
+            + "C43: 10♦\n"
+            + "C44: 9♦\n"
+            + "C45: 8♦\n"
+            + "C46:\n"
+            + "C47: 6♦\n"
+            + "C48:\n"
+            + "C49: 4♦\n"
+            + "C50:\n"
+            + "C51: 2♦\n"
+            + "C52:", gameThree.getGameState());
+
+    try {
+      gameThree.move(PileType.CASCADE, 17, 0, PileType.OPEN, 0);
+      fail("The move should be invalid");
+    } catch (IllegalArgumentException e) {
+      // do nothing.
+    }
+
+    try {
+      gameThree.move(PileType.CASCADE, 17, 0, PileType.FOUNDATION, 1);
+      fail("The move should be invalid");
+    } catch (IllegalArgumentException e) {
+      // do nothing.
+    }
   }
 }

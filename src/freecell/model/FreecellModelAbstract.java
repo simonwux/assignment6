@@ -8,15 +8,15 @@ import java.util.Set;
 //Do we need the abstract class???
 public abstract class FreecellModelAbstract implements FreecellOperations{
 
-  private final int CARDNUM;
-  private final int CARDTYPENUM;
-  private final int SUITTYPENUM;
-  private final int cascades;
-  private final int opens;
-  private List<List<Card>> cascadePile;
-  private List<Card> openPile;
-  private List<List<Card>> foundationPile;
-  private boolean startGameFlag;
+  protected final int CARDNUM = 52;
+  protected final int CARDTYPENUM = 13;
+  protected final int SUITTYPENUM = 4;
+  protected int cascades;
+  protected int opens;
+  protected List<List<Card>> cascadePile;
+  protected List<Card> openPile;
+  protected List<List<Card>> foundationPile;
+  protected boolean startGameFlag;
 
   /**
    * The constructor build up a Freecell game with provides number of cascade piles and open piles.
@@ -25,26 +25,7 @@ public abstract class FreecellModelAbstract implements FreecellOperations{
    * @param opens    Number of open pile.
    */
 
-  public FreecellModelAbstract(int cascades, int opens) {
-    this.startGameFlag = false;
-    this.CARDNUM = 52;
-    this.CARDTYPENUM = 13;
-    this.SUITTYPENUM = CardType.values().length;
-    this.cascades = cascades;
-    this.opens = opens;
-    this.cascadePile = new ArrayList();
-    for (int i = 0; i < this.cascades; i++) {
-      this.cascadePile.add(new ArrayList<Card>());
-    }
-    this.openPile = new ArrayList();
-    for (int i = 0; i < this.opens; i++) {
-      this.openPile.add(null);
-    }
-    this.foundationPile = new ArrayList();
-    for (int i = 0; i < this.SUITTYPENUM; i++) {
-      this.foundationPile.add(new ArrayList<Card>());
-    }
-  }
+
 
   /**
    * Return a valid and complete deck of cards for a game of Freecell. There is no restriction
@@ -369,11 +350,11 @@ public abstract class FreecellModelAbstract implements FreecellOperations{
     return ans.substring(0, ans.length() - 1);
   }
 
-  private void shuffle(List deck) {
+  protected void shuffle(List deck) {
     Collections.shuffle(deck);
   }
 
-  private boolean isDeckValid(List deck) {
+  protected boolean isDeckValid(List deck) {
 
     if (deck.size() != CARDNUM) {
       return false;

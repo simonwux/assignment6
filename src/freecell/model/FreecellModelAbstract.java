@@ -5,8 +5,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 //Do we need the abstract class???
-public abstract class FreecellModelAbstract implements FreecellOperations{
+public abstract class FreecellModelAbstract implements FreecellOperations {
 
   protected final int CARDNUM = 52;
   protected final int CARDTYPENUM = 13;
@@ -24,7 +25,6 @@ public abstract class FreecellModelAbstract implements FreecellOperations{
    * @param cascades Number of cascade pile.
    * @param opens    Number of open pile.
    */
-
 
 
   /**
@@ -104,164 +104,9 @@ public abstract class FreecellModelAbstract implements FreecellOperations{
    * @throws IllegalStateException    if a move is attempted before the game has starts
    */
 
-  public void move(PileType source, int pileNumber, int cardIndex,
-                   PileType destination, int destPileNumber)
-          throws IllegalArgumentException, IllegalStateException {
-
-    if (!this.startGameFlag) {
-      throw new IllegalStateException("The game has not started.");
-    }
-    // Get the current card to be move.
-
-    Card currentCard;
-    List sourceList;
-
-    if (source == PileType.OPEN) {
-
-      if (pileNumber >= opens || pileNumber < 0) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index.");
-      }
-
-      Card targetCard = openPile.get(pileNumber); // initialized with null.
-
-      if (targetCard == null) {
-        throw new IllegalArgumentException("There is no such card to be move.");
-      }
-
-      currentCard = openPile.get(pileNumber);
-      sourceList = openPile;
-
-    } else if (source == PileType.CASCADE) { // Only the top card of a cascade pile can be moved.
-
-      if (pileNumber >= cascades || pileNumber < 0) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index.");
-      }
-
-      sourceList = cascadePile.get(pileNumber);
-
-      if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
-        throw new IllegalArgumentException("Source pile does not contain any card.");
-      }
-
-      if (cardIndex != sourceList.size() - 1) {
-        throw new IllegalArgumentException("Card to be move is not top card of a cascade pile.");
-      }
-
-      currentCard = (Card) sourceList.get(cardIndex);
-
-    } else {
-
-      if (pileNumber >= SUITTYPENUM || pileNumber < 0) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index. ");
-      }
-
-      sourceList = foundationPile.get(pileNumber);
-
-      if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
-        throw new IllegalArgumentException("Target pile does not contain any card.");
-      }
-
-      if (cardIndex != sourceList.size() - 1) {
-        throw new IllegalArgumentException("Card to be move is not top card of a foundation pile.");
-      }
-
-      currentCard = (Card) sourceList.get(cardIndex);
-
-    }
-
-    boolean movable = false;
-    List targetList;
-
-    // A card can be added added to a foundation iff its suit match that of the pile, and its value
-    // is one more that that of the card currently one top of the pile. If the foundation pile is
-    // currently empty, any ace can be added.
-
-    if (destination == PileType.FOUNDATION) {
-
-      if (destPileNumber >= SUITTYPENUM || destPileNumber < 0) {
-        throw new IllegalArgumentException("Pile number out of index.");
-      }
-
-      targetList = foundationPile.get(destPileNumber);
-
-      if (targetList.isEmpty()) {
-
-        if (currentCard.getRank() == 1) {
-          movable = true;
-        }
-
-      } else {
-
-        Card topCard = (Card) targetList.get(targetList.size() - 1);
-
-        if (topCard.getType() == currentCard.getType()
-                && topCard.getRank() + 1 == currentCard.getRank()) {
-          movable = true;
-        }
-      }
-
-    }
-
-    // An open pile may contain at most one card.
-
-    else if (destination == PileType.OPEN) {
-
-      if (destPileNumber >= opens || destPileNumber < 0) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index.");
-      }
-
-      targetList = openPile;
-
-      if (targetList.get(destPileNumber) == null) {
-        movable = true;
-      }
-    }
-
-    // However, a card from some pile can be moved to the end of a cascade pile if and only if
-    // its color is different from that of the currently last card, and its value is exactly one
-    // less than that of the currently last card
-
-    else {
-
-      if (destPileNumber >= cascades || destPileNumber < 0) { //suppose 0 1 2 3
-        throw new IllegalArgumentException("Pile number out of index.");
-      }
-
-      targetList = cascadePile.get(destPileNumber);
-
-      if (targetList.isEmpty()) {
-        movable = true;
-      } else {
-
-        Card topCard = (Card) targetList.get(targetList.size() - 1);
-
-        if (topCard.getColor() != currentCard.getColor()
-                && topCard.getRank() - 1 == currentCard.getRank()) {
-          movable = true;
-        }
-      }
-
-    }
-
-    // now we do the move.
-
-    if (!movable) {
-      throw new IllegalArgumentException("The move is not valid.");
-    } else {
-
-      if (sourceList == openPile) {
-        sourceList.set(pileNumber, null);
-      } else {
-        sourceList.remove(currentCard);
-      }
-
-      if (targetList == openPile) {
-        targetList.set(destPileNumber, currentCard);
-      } else {
-        targetList.add(currentCard);
-      }
-    }
-  }
+  public abstract void move(PileType source, int pileNumber, int cardIndex,
+                            PileType destination, int destPileNumber)
+          throws IllegalArgumentException, IllegalStateException;
 
   /**
    * Signal if the game is over or not.

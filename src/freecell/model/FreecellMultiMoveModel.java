@@ -44,7 +44,6 @@ public class FreecellMultiMoveModel extends FreecellModelAbstract {
    */
 
   // The move method needs to be overridden to fit with multi card movements.
-
   public void move(PileType source, int pileNumber, int cardIndex,
                    PileType destination, int destPileNumber)
           throws IllegalArgumentException, IllegalStateException {
@@ -98,12 +97,12 @@ public class FreecellMultiMoveModel extends FreecellModelAbstract {
       Card lastCard = new Card(currentCard.getType(), currentCard.getRank());
 
       for (int i = cardIndex + 1; i < sourceList.size(); i++) {
-        Card card = (Card)sourceList.get(i);
+        Card card = (Card) sourceList.get(i);
         if (card.getColor() == lastCard.getColor() || card.getRank() + 1 != lastCard.getRank()) {
           throw new IllegalArgumentException("Multi-move on cards out of order");
         }
         lastCard = card;
-        moveNum ++;
+        moveNum++;
       }
 
       if (moveNum > 1) {

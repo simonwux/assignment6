@@ -544,6 +544,21 @@ public class FreecellModelTest {
       }
     }
     assertTrue(gameOne.isGameOver());
+
+    assertFalse(gameTwo.isGameOver());
+    sourcePile = 3;
+    index = 6;
+    for (int targetPile = 0; targetPile < 4; targetPile++) {
+      for (int i = 0; i < 13; i++) {
+        gameTwo.move(PileType.CASCADE, sourcePile, index, PileType.FOUNDATION, targetPile);
+        sourcePile -= 1;
+        if (sourcePile < 0) {
+          sourcePile = 7;
+          index -= 1;
+        }
+      }
+    }
+    assertTrue(gameTwo.isGameOver());
   }
 
   @Test

@@ -148,7 +148,7 @@ public class FreecellController implements IFreecellController {
           targetIndex = Integer.parseInt(c.substring(1));
           targetIndex -= 1;
         } catch (NumberFormatException e) {
-          output("Invalid source pile index, input again.\n");
+          output("Invalid target pile index, input again.\n");
           continue;
         }
 

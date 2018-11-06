@@ -120,45 +120,45 @@ public class FreecellControllerTest {
     StringBuffer out2 = new StringBuffer();
     controller = new FreecellController(in, out2);
     controller.playGame(gameOne.getDeck(), gameOne, false);
-    assertEquals("F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n" +
-            "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n" +
-            "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n" +
-            "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n" +
-            "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n" +
-            "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n" +
-            "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n" +
-            "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n" +
-            "Game quit prematurely.\n", out2.toString());
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n"
+            + "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n"
+            + "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n"
+            + "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n"
+            + "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n"
+            + "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n"
+            + "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n"
+            + "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n"
+            + "Game quit prematurely.\n", out2.toString());
 
     in = new StringReader("Q");
     StringBuffer out3 = new StringBuffer();
     controller = new FreecellController(in, out3);
     controller.playGame(deck, gameOne, false);
-    assertEquals("F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n" +
-            "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n" +
-            "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n" +
-            "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦, A♦\n" +
-            "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n" +
-            "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n" +
-            "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n" +
-            "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦\n" +
-            "Game quit prematurely.\n", out3.toString());
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: K♠, 5♠, 10♥, 2♥, 7♣, Q♦, 4♦\n"
+            + "C2: Q♠, 4♠, 9♥, A♥, 6♣, J♦, 3♦\n"
+            + "C3: J♠, 3♠, 8♥, K♣, 5♣, 10♦, 2♦\n"
+            + "C4: 10♠, 2♠, 7♥, Q♣, 4♣, 9♦, A♦\n"
+            + "C5: 9♠, A♠, 6♥, J♣, 3♣, 8♦\n"
+            + "C6: 8♠, K♥, 5♥, 10♣, 2♣, 7♦\n"
+            + "C7: 7♠, Q♥, 4♥, 9♣, A♣, 6♦\n"
+            + "C8: 6♠, J♥, 3♥, 8♣, K♦, 5♦\n"
+            + "Game quit prematurely.\n", out3.toString());
 
     // When deck is null.
     in = new StringReader("Q");
@@ -221,23 +221,23 @@ public class FreecellControllerTest {
       }
       ans = outSt.charAt(i) + ans;
     }
-    assertEquals("F1: A♦, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, 10♦, J♦, Q♦, K♦\n" +
-            "F2: A♣, 2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, 10♣, J♣, Q♣, K♣\n" +
-            "F3: A♥, 2♥, 3♥, 4♥, 5♥, 6♥, 7♥, 8♥, 9♥, 10♥, J♥, Q♥, K♥\n" +
-            "F4: A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1:\n" +
-            "C2:\n" +
-            "C3:\n" +
-            "C4:\n" +
-            "C5:\n" +
-            "C6:\n" +
-            "C7:\n" +
-            "C8:\n" +
-            "Game over.\n", ans);
+    assertEquals("F1: A♦, 2♦, 3♦, 4♦, 5♦, 6♦, 7♦, 8♦, 9♦, 10♦, J♦, Q♦, K♦\n"
+            + "F2: A♣, 2♣, 3♣, 4♣, 5♣, 6♣, 7♣, 8♣, 9♣, 10♣, J♣, Q♣, K♣\n"
+            + "F3: A♥, 2♥, 3♥, 4♥, 5♥, 6♥, 7♥, 8♥, 9♥, 10♥, J♥, Q♥, K♥\n"
+            + "F4: A♠, 2♠, 3♠, 4♠, 5♠, 6♠, 7♠, 8♠, 9♠, 10♠, J♠, Q♠, K♠\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1:\n"
+            + "C2:\n"
+            + "C3:\n"
+            + "C4:\n"
+            + "C5:\n"
+            + "C6:\n"
+            + "C7:\n"
+            + "C8:\n"
+            + "Game over.\n", ans);
 
     // Mock testing.
     StringBuilder log = new StringBuilder();
@@ -246,8 +246,8 @@ public class FreecellControllerTest {
     StringBuffer out8 = new StringBuffer();
     controller = new FreecellController(in, out8);
     controller.playGame(deck, gameThree, false);
-    assertEquals("CASCADE 0 6 OPEN 0\n" +
-            "CASCADE 2 6 OPEN 1\n" +
-            "CASCADE 7 5 OPEN 2\n", log.toString());
+    assertEquals("CASCADE 0 6 OPEN 0\n"
+            + "CASCADE 2 6 OPEN 1\n"
+            + "CASCADE 7 5 OPEN 2\n", log.toString());
   }
 }

@@ -1,4 +1,3 @@
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.Reader;
@@ -12,17 +11,10 @@ import freecell.model.CardType;
 import freecell.model.FreecellModel;
 import freecell.model.FreecellOperations;
 import freecell.model.MockModel;
-import freecell.model.PileType;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
 
 public class FreecellControllerTest {
-
-  @Before
-  public void setUp() throws Exception {
-  }
 
   @Test
   public void playGame() {
@@ -78,50 +70,50 @@ public class FreecellControllerTest {
     in = new StringReader("A1 C1asfd C1 8as 8as 8as 8as 8.5 8 OAS A1 W1a O1 q");
     controller = new FreecellController(in, out);
     controller.playGame(gameOne.getDeck(), gameOne, false);
-    assertEquals("F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n" +
-            "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n" +
-            "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n" +
-            "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n" +
-            "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n" +
-            "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n" +
-            "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n" +
-            "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n" +
-            "Invalid source pile name, input again.\n" +
-            "Invalid source pile index, input again.\n" +
-            "Invalid card index, input again.\n" +
-            "Invalid card index, input again.\n" +
-            "Invalid card index, input again.\n" +
-            "Invalid card index, input again.\n" +
-            "Invalid card index, input again.\n" +
-            "Invalid target pile index, input again.\n" +
-            "Invalid target pile name, input again.\n" +
-            "Invalid target pile name, input again.\n" +
-            "Invalid move. Try again. Card to be move is not top card of a cascade pile.\n" +
-            "F1:\n" +
-            "F2:\n" +
-            "F3:\n" +
-            "F4:\n" +
-            "O1:\n" +
-            "O2:\n" +
-            "O3:\n" +
-            "O4:\n" +
-            "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n" +
-            "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n" +
-            "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n" +
-            "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n" +
-            "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n" +
-            "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n" +
-            "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n" +
-            "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n" +
-            "Game quit prematurely.\n", out.toString());
+    assertEquals("F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n"
+            + "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n"
+            + "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n"
+            + "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n"
+            + "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n"
+            + "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n"
+            + "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n"
+            + "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n"
+            + "Invalid source pile name, input again.\n"
+            + "Invalid source pile index, input again.\n"
+            + "Invalid card index, input again.\n"
+            + "Invalid card index, input again.\n"
+            + "Invalid card index, input again.\n"
+            + "Invalid card index, input again.\n"
+            + "Invalid card index, input again.\n"
+            + "Invalid target pile index, input again.\n"
+            + "Invalid target pile name, input again.\n"
+            + "Invalid target pile name, input again.\n"
+            + "Invalid move. Try again. Card to be move is not top card of a cascade pile.\n"
+            + "F1:\n"
+            + "F2:\n"
+            + "F3:\n"
+            + "F4:\n"
+            + "O1:\n"
+            + "O2:\n"
+            + "O3:\n"
+            + "O4:\n"
+            + "C1: A♠, 3♠, 5♠, 7♠, 9♠, J♠, K♠\n"
+            + "C2: A♦, 3♦, 5♦, 7♦, 9♦, J♦, K♦\n"
+            + "C3: A♥, 3♥, 5♥, 7♥, 9♥, J♥, K♥\n"
+            + "C4: A♣, 3♣, 5♣, 7♣, 9♣, J♣, K♣\n"
+            + "C5: 2♠, 4♠, 6♠, 8♠, 10♠, Q♠\n"
+            + "C6: 2♦, 4♦, 6♦, 8♦, 10♦, Q♦\n"
+            + "C7: 2♥, 4♥, 6♥, 8♥, 10♥, Q♥\n"
+            + "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n"
+            + "Game quit prematurely.\n", out.toString());
 
     // Test 'Q'.
     in = new StringReader("Q");
@@ -204,7 +196,8 @@ public class FreecellControllerTest {
     int index = 7;
     for (int targetPile = 0; targetPile < 4; targetPile++) {
       for (int i = 0; i < 13; i++) {
-        st += "C" + Integer.toString(sourcePile) + " " + Integer.toString(index) + " " + "F" + Integer.toString(targetPile + 1) + " ";
+        st += "C" + Integer.toString(sourcePile) + " " + Integer.toString(index) + " " + "F"
+                + Integer.toString(targetPile + 1) + " ";
         sourcePile -= 1;
         if (sourcePile < 1) {
           sourcePile = 8;

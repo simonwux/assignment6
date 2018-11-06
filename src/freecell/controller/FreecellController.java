@@ -8,11 +8,21 @@ import java.util.Scanner;
 import freecell.model.FreecellOperations;
 import freecell.model.PileType;
 
+/**
+ * This class represents the implementation of a FreeCell controller.
+ */
 public class FreecellController implements IFreecellController {
 
   final Readable in;
   final Appendable out;
 
+  /**
+   * This method initializes a FreeCellController. It can parse the input and output the result to
+   * the appendable object.
+   *
+   * @param rd the input source
+   * @param ap the output appendable object
+   */
   public FreecellController(Readable rd, Appendable ap) throws IllegalArgumentException {
     if (rd == null || ap == null) {
       throw new IllegalArgumentException("Input and output should not be null.");
@@ -80,14 +90,15 @@ public class FreecellController implements IFreecellController {
       throw new IllegalArgumentException("Model should not be null.");
     }
     model.startGame(deck, shuffle);
-    String a, b, c;
+    String a;
+    String b;
+    String c;
     PileType sourceType;
     int sourceIndex;
     int cardIndex;
     PileType targetType;
     int targetIndex;
     Scanner scan = new Scanner(this.in);
-    //a = scan.next();
     while (true) {
       sourceIndex = -1;
       sourceType = null;

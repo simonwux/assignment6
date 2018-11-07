@@ -13,6 +13,7 @@ import freecell.model.FreecellOperations;
 import freecell.model.MockModel;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 public class FreecellControllerTest {
 
@@ -138,6 +139,13 @@ public class FreecellControllerTest {
             + "C8: 2♣, 4♣, 6♣, 8♣, 10♣, Q♣\n"
             + "Game quit prematurely.\n", out2.toString());
 
+    // Test shuffle.
+    in = new StringReader("Q");
+    StringBuffer out21 = new StringBuffer();
+    controller = new FreecellController(in, out21);
+    controller.playGame(gameOne.getDeck(), gameOne, true);
+    assertNotEquals(out2.toString(), out21.toString());
+
     in = new StringReader("Q");
     StringBuffer out3 = new StringBuffer();
     controller = new FreecellController(in, out3);
@@ -242,12 +250,18 @@ public class FreecellControllerTest {
     // Mock testing.
     StringBuilder log = new StringBuilder();
     MockModel gameThree = new MockModel(log);
-    in = new StringReader("C1 7 O1 C3 7 O2 C8 6 O3 q");
+    in = new StringReader("C1   7 O1 C3 7 O2 C8 6 O3 \n "
+            + "O1 1 C1 O2 1 F1 F2 1\nC3 F3 1 O1\nC8 7\nF1 q");
     StringBuffer out8 = new StringBuffer();
     controller = new FreecellController(in, out8);
     controller.playGame(deck, gameThree, false);
     assertEquals("CASCADE 0 6 OPEN 0\n"
             + "CASCADE 2 6 OPEN 1\n"
-            + "CASCADE 7 5 OPEN 2\n", log.toString());
+            + "CASCADE 7 5 OPEN 2\n"
+            + "OPEN 0 0 CASCADE 0\n"
+            + "OPEN 1 0 FOUNDATION 0\n"
+            + "FOUNDATION 1 0 CASCADE 2\n"
+            + "FOUNDATION 2 0 OPEN 0\n"
+            + "CASCADE 7 6 FOUNDATION 0\n", log.toString());
   }
 }

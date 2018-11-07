@@ -13,8 +13,8 @@ import freecell.model.PileType;
  */
 public class FreecellController implements IFreecellController {
 
-  final Readable in;
-  final Appendable out;
+  private final Readable in;
+  private final Appendable out;
 
   /**
    * This method initializes a FreeCellController. It can parse the input and output the result to

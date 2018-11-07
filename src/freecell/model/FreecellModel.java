@@ -1,6 +1,5 @@
 package freecell.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class FreecellModel extends FreecellModelAbstract {
@@ -11,23 +10,8 @@ public class FreecellModel extends FreecellModelAbstract {
    * @param cascades Number of cascade pile.
    * @param opens    Number of open pile.
    */
-
   private FreecellModel(int cascades, int opens) {
-    this.startGameFlag = false;
-    this.cascades = cascades;
-    this.opens = opens;
-    this.cascadePile = new ArrayList();
-    for (int i = 0; i < this.cascades; i++) {
-      this.cascadePile.add(new ArrayList<Card>());
-    }
-    this.openPile = new ArrayList();
-    for (int i = 0; i < this.opens; i++) {
-      this.openPile.add(null);
-    }
-    this.foundationPile = new ArrayList();
-    for (int i = 0; i < this.SUITTYPENUM; i++) {
-      this.foundationPile.add(new ArrayList<Card>());
-    }
+    super(cascades, opens);
   }
 
 

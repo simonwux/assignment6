@@ -1,50 +1,34 @@
 package freecell.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A more realistic version of Freecell is one where the player can move several cards at once from
  * one cascade pile to another (while it is also possible to move several cards from a cascade pile
- * to a foundation pile, we will ignore this feature in this variation).
- * Moving multiple cards must obey two conditions. The first condition is that they should form a
- * valid build, i.e. they should be arranged in alternating colors and consecutive, descending
- * values in the cascade pile that they are moving from. The second condition is the same for any
- * move to a cascade pile: these cards should form a build with the last card in the destination
- * cascade pile.
+ * to a foundation pile, we will ignore this feature in this variation). Moving multiple cards must
+ * obey two conditions. The first condition is that they should form a valid build, i.e. they should
+ * be arranged in alternating colors and consecutive, descending values in the cascade pile that
+ * they are moving from. The second condition is the same for any move to a cascade pile: these
+ * cards should form a build with the last card in the destination cascade pile.
  */
 
 public class FreecellMultiMoveModel extends FreecellModelAbstract {
 
   /**
-   * The constructor build up a Freecell game with provides number of cascade piles and open piles.
+   * The constructor build up a MultiFreecell game with provides number of cascade piles and open
+   * piles.
    *
    * @param cascades Number of cascade pile.
    * @param opens    Number of open pile.
    */
 
   private FreecellMultiMoveModel(int cascades, int opens) {
-
-    this.startGameFlag = false;
-    this.cascades = cascades;
-    this.opens = opens;
-    this.cascadePile = new ArrayList();
-    for (int i = 0; i < this.cascades; i++) {
-      this.cascadePile.add(new ArrayList<Card>());
-    }
-    this.openPile = new ArrayList();
-    for (int i = 0; i < this.opens; i++) {
-      this.openPile.add(null);
-    }
-    this.foundationPile = new ArrayList();
-    for (int i = 0; i < this.SUITTYPENUM; i++) {
-      this.foundationPile.add(new ArrayList<Card>());
-    }
+    super(cascades, opens);
   }
 
   /**
-   * Move a card from the given source pile to the given destination pile, if the move is valid.
-   * The version of move() method is upgraded for some multi-move functionality.
+   * Move a card from the given source pile to the given destination pile, if the move is valid. The
+   * version of move() method is upgraded for some multi-move functionality.
    *
    * @param source         the type of the source pile see @link{PileType}
    * @param pileNumber     the pile number of the given type, starting at 0

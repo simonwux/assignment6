@@ -6,18 +6,42 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-//Do we need the abstract class???
 public abstract class FreecellModelAbstract implements FreecellOperations {
 
   protected final int CARDNUM = 52;
   protected final int CARDTYPENUM = 13;
   protected final int SUITTYPENUM = 4;
-  protected int cascades;
-  protected int opens;
+  protected final int cascades;
+  protected final int opens;
   protected List<List<Card>> cascadePile;
   protected List<Card> openPile;
   protected List<List<Card>> foundationPile;
   protected boolean startGameFlag;
+
+  /**
+   * The constructor build up any Freecell game with provides number of cascade piles and open
+   * piles.
+   *
+   * @param cascades Number of cascade pile.
+   * @param opens    Number of open pile.
+   */
+  public FreecellModelAbstract(int cascades, int opens) {
+    this.startGameFlag = false;
+    this.cascades = cascades;
+    this.opens = opens;
+    this.cascadePile = new ArrayList();
+    for (int i = 0; i < this.cascades; i++) {
+      this.cascadePile.add(new ArrayList<Card>());
+    }
+    this.openPile = new ArrayList();
+    for (int i = 0; i < this.opens; i++) {
+      this.openPile.add(null);
+    }
+    this.foundationPile = new ArrayList();
+    for (int i = 0; i < this.SUITTYPENUM; i++) {
+      this.foundationPile.add(new ArrayList<Card>());
+    }
+  }
 
   /**
    * The constructor build up a Freecell game with provides number of cascade piles and open piles.

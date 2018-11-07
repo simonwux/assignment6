@@ -3,7 +3,8 @@ package freecell.model;
 public class MockModel extends FreecellModelAbstract {
   private StringBuilder log;
 
-  public MockModel(StringBuilder log) {
+  public MockModel(int cascades, int opens, StringBuilder log) {
+    super(cascades, opens);
     this.log = log;
   }
 

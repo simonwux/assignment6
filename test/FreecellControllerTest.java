@@ -249,7 +249,7 @@ public class FreecellControllerTest {
 
     // Mock testing.
     StringBuilder log = new StringBuilder();
-    MockModel gameThree = new MockModel(log);
+    MockModel gameThree = new MockModel(8, 4, log);
     in = new StringReader("C1   7 O1 C3 7 O2 C8 6 O3 \n "
             + "O1 1 C1 O2 1 F1 F2 1\nC3 F3 1 O1\nC8 7\nF1 q");
     StringBuffer out8 = new StringBuffer();

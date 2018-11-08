@@ -127,7 +127,7 @@ public class FreecellMultiMoveModel extends FreecellModelAbstract {
       if (multipleMove) {
         throw new IllegalArgumentException("Cannot multi-move to open");
       }
-      targetList = isTargetOpenPileMovable(destPileNumber)? openPile : null;
+      targetList = isTargetOpenPileMovable(destPileNumber) ? openPile : null;
 
     } else {
       targetList = getTargetCascadePile(destPileNumber, currentCard);

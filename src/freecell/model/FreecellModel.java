@@ -69,7 +69,7 @@ public class FreecellModel extends FreecellModelAbstract {
     if (destination == PileType.FOUNDATION) {
       targetList = getTargetFoundationPile(destPileNumber, currentCard);
     } else if (destination == PileType.OPEN) {
-      targetList = isTargetOpenPileMovable(destPileNumber)? openPile : null;
+      targetList = isTargetOpenPileMovable(destPileNumber) ? openPile : null;
     } else {
       targetList = getTargetCascadePile(destPileNumber, currentCard);
     }

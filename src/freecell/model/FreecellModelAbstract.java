@@ -116,6 +116,108 @@ public abstract class FreecellModelAbstract implements FreecellOperations {
     }
   }
 
+  protected Card getSourceOpenPileCard(int pileNumber) throws IllegalArgumentException {
+    if (pileNumber >= opens || pileNumber < 0) { //suppose 0 1 2 3
+      throw new IllegalArgumentException("Pile number out of index.");
+    }
+    Card targetCard = openPile.get(pileNumber);
+    if (targetCard == null) {
+      throw new IllegalArgumentException("There is no such card to be move.");
+    }
+    return targetCard;
+  }
+
+  protected List<Card> getSourceFoundationPile(int pileNumber, int cardIndex)
+          throws IllegalArgumentException {
+
+    if (pileNumber >= SUITTYPENUM || pileNumber < 0) { //suppose 0 1 2 3
+      throw new IllegalArgumentException("Pile number out of index. ");
+    }
+
+    List<Card> sourceList = foundationPile.get(pileNumber);
+
+    if (sourceList.isEmpty()) { // When the pile is empty, there is no element in the list.
+      throw new IllegalArgumentException("Target pile does not contain any card.");
+    }
+
+    if (cardIndex != sourceList.size() - 1) {
+      throw new IllegalArgumentException("Card to be move is not top card of a foundation pile.");
+    }
+
+    return sourceList;
+
+  }
+
+  protected List<Card> getTargetFoundationPile(int destPileNumber, Card currentCard)
+          throws IllegalArgumentException {
+    if (destPileNumber >= SUITTYPENUM || destPileNumber < 0) {
+      throw new IllegalArgumentException("Pile number out of index.");
+    }
+
+    List<Card> targetList = foundationPile.get(destPileNumber);
+
+    if (targetList.isEmpty()) {
+      if (currentCard.getRank() != 1) {
+        return null;
+      }
+    } else {
+
+      Card topCard = targetList.get(targetList.size() - 1);
+
+      if (topCard.getType() != currentCard.getType()
+              || topCard.getRank() + 1 != currentCard.getRank()) {
+        return null;
+      }
+    }
+    return targetList;
+  }
+
+  protected boolean isTargetOpenPileMovable(int destPileNumber) {
+    if (destPileNumber >= opens || destPileNumber < 0) { //suppose 0 1 2 3
+      throw new IllegalArgumentException("Pile number out of index.");
+    }
+    return openPile.get(destPileNumber) == null;
+  }
+
+  protected List<Card> getTargetCascadePile(int destPileNumber, Card currentCard)
+          throws IllegalArgumentException {
+
+    if (destPileNumber >= cascades || destPileNumber < 0) { //suppose 0 1 2 3
+      throw new IllegalArgumentException("Pile number out of index.");
+    }
+
+    List<Card> targetList = cascadePile.get(destPileNumber);
+
+    if (targetList.isEmpty()) {
+      return targetList;
+    } else {
+
+      Card topCard = targetList.get(targetList.size() - 1);
+
+      if (topCard.getColor() != currentCard.getColor()
+              && topCard.getRank() - 1 == currentCard.getRank()) {
+        return targetList;
+      }
+    }
+    return null;
+  }
+
+  protected void singleMove(List<Card> sourceList, List<Card> targetList, int pileNumber,
+                            int destPileNumber, Card currentCard) {
+
+    if (sourceList == openPile) {
+      sourceList.set(pileNumber, null);
+    } else {
+      sourceList.remove(currentCard);
+    }
+
+    if (targetList == openPile) {
+      targetList.set(destPileNumber, currentCard);
+    } else {
+      targetList.add(currentCard);
+    }
+  }
+
   /**
    * Move a card from the given source pile to the given destination pile, if the move is valid.
    *
